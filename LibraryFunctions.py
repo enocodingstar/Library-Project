@@ -2,7 +2,7 @@ def load_record(filename):
     """Load the file when the program starts"""
     try:
         with open(filename, "w") as file:
-            file.write("All library records are saved here./n")
+            file.write("All library records are saved here.\n")
     except FileExistsError:
         print(f"File {filename} already exists")
     return[]
@@ -40,7 +40,7 @@ def append_records(filename, content):
     """Add records to a file"""
     try:
         with open(filename, "a") as file:
-            file.write(content + "/n")
+            file.write(content + "\n")
     except Exception as e:
         print("An error occured")
     return filename, content

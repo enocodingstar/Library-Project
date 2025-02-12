@@ -19,8 +19,8 @@ def main():
         choice = input("Choose an option from 1-5:")
 
         if choice == "1":
-            title = input("Enter the book's title:")
-            author = input("Enter the book's author:")
+            title = input("Enter the book's title:").strip().lower()
+            author = input("Enter the book's author:").strip().lower()
             status = "available"
 
             book = LibraryFunctions.add_books(title, author, status)
@@ -35,23 +35,23 @@ def main():
             if books:
                 print("Here are the books in the library:\n")
                 for i, book in enumerate(books, start=1):
-                    print(f"{i}. {book["title"]} by {book["author"]}. Status: {book["status"]}")
+                    print(f"{i}. {book['title']} by {book['author']}. Status: {book['status']}")
             else:
                 print("No books are currently in the library")
         elif choice == "3":
-            title = input("Enter a book title:")
+            title = input("Enter a book title:").strip().lower()
 
             book = LibraryFunctions.borrow_books(title)
 
             if book:
-                if book["status"] == "available":
-                    print(f"You have borrowed {book["title"]} by {book["author"]}.")
+                if book['status'] == "available":
+                    print(f"You have borrowed {book['title']} by {book['author']}.")
 
 
                     content = f"{book['title']} by {book['author']} borrowed"
                     LibraryFunctions.append_records(filename, content)
 
-                    book["status"] = "borrowed"
+                    book['status'] = "borrowed"
 
 
                 elif book["status"] == "borrowed":
